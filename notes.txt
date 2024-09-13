@@ -1,0 +1,5 @@
+Url Template Tagging
+<a href="{% url 'booking_site:booking'%}">Booking Site</a>
+<a href="{% url 'admin:index'%}">For admin page</a>
+<a href="{% url 'index'%}">Link to index</a>
+
