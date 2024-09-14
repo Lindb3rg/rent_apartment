@@ -5,10 +5,16 @@
 
 
     <!-- Push down content on small screens -->
-    <div class="w3-hide-large" style="margin-top:80px"></div>
-  
+    
+    
     <!-- Slideshow Header -->
+    {% for apartment in apartments %}
+
+    <div class="w3-hide-large" style="margin-top:80px"></div>
     <div class="w3-container" id="apartment">
+      
+    {% comment %} Listing of apartments starts here {% endcomment %}
+    
       <h2 class="w3-text-green">The Apartment</h2>
       <div class="w3-display-container mySlides">
       <img src="{% static 'images/livingroom.jpg'%}" style="width:100%;margin-bottom:-6px">
@@ -54,13 +60,13 @@
       <h4><strong>The space</strong></h4>
       <div class="w3-row w3-large">
         <div class="w3-col s6">
-          <p><i class="fa fa-fw fa-male"></i> Max people: 4</p>
-          <p><i class="fa fa-fw fa-bath"></i> Bathrooms: 2</p>
-          <p><i class="fa fa-fw fa-bed"></i> Bedrooms: 1</p>
+          <p><i class="fa fa-fw fa-male"></i> Max people: {{apartment.max_people}}</p>
+          <p><i class="fa fa-fw fa-bath"></i> Bathrooms: {{apartment.bathrooms}}</p>
+          <p><i class="fa fa-fw fa-bed"></i> Bedrooms: {{apartment.bedrooms}}</p>
         </div>
         <div class="w3-col s6">
-          <p><i class="fa fa-fw fa-clock-o"></i> Check In: After 3PM</p>
-          <p><i class="fa fa-fw fa-clock-o"></i> Check Out: 12PM</p>
+          <p><i class="fa fa-fw fa-clock-o"></i> Check In: After {{apartment.check_in}}</p>
+          <p><i class="fa fa-fw fa-clock-o"></i> Check Out: {{apartment.check_out}}</p>
         </div>
       </div>
       <hr>
@@ -68,46 +74,46 @@
       <h4><strong>Amenities</strong></h4>
       <div class="w3-row w3-large">
         <div class="w3-col s6">
-          <p><i class="fa fa-fw fa-shower"></i> Shower</p>
-          <p><i class="fa fa-fw fa-wifi"></i> WiFi</p>
-          <p><i class="fa fa-fw fa-tv"></i> TV</p>
+          <p><i class="fa fa-fw fa-shower"></i> {{apartment.shower}}</p>
+          <p><i class="fa fa-fw fa-wifi"></i> {{apartment.wifi}}</p>
+          <p><i class="fa fa-fw fa-tv"></i> {{apartment.tv}}</p>
         </div>
         <div class="w3-col s6">
-          <p><i class="fa fa-fw fa-cutlery"></i> Kitchen</p>
-          <p><i class="fa fa-fw fa-thermometer"></i> Heating</p>
-          <p><i class="fa fa-fw fa-wheelchair"></i> Accessible</p>
+          <p><i class="fa fa-fw fa-cutlery"></i> {{apartment.kitchen}}</p>
+          <p><i class="fa fa-fw fa-thermometer"></i> {{apartment.heating}}</p>
+          <p><i class="fa fa-fw fa-wheelchair"></i> {{apartment.accessible}}</p>
         </div>
       </div>
       <hr>
       
       <h4><strong>Extra Info</strong></h4>
-      <p>Our apartment is really clean and we like to keep it that way. Enjoy the lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>{{apartment.extra_info}}</p>
       <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
       <hr>
       
       <h4><strong>Rules</strong></h4>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <p>{{apartment.rules}}</p>
       
     </div>
+    <div class="w3-container" id="contact">
+        <h2>Contact</h2>
+        <i class="fa fa-map-marker" style="width:30px"></i> {{apartment.city}}, {{apartment.country}}<br>
+        <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
+        <i class="fa fa-envelope" style="width:30px"> </i> Email: {{apartment.email}}<br>
+        <p>Questions? Go ahead, ask them:</p>
+        <form action="/action_page.php" target="_blank">
+          <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
+          <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
+        <button type="submit" class="w3-button w3-green w3-third">Send a Message</button>
+        </form>
+      </div>
     <hr>
 
-    
-    <!-- Contact -->
-    <div class="w3-container" id="contact">
-      <h2>Contact</h2>
-      <i class="fa fa-map-marker" style="width:30px"></i> Chicago, US<br>
-      <i class="fa fa-phone" style="width:30px"></i> Phone: +00 151515<br>
-      <i class="fa fa-envelope" style="width:30px"> </i> Email: mail@mail.com<br>
-      <p>Questions? Go ahead, ask them:</p>
-      <form action="/action_page.php" target="_blank">
-        <p><input class="w3-input w3-border" type="text" placeholder="Name" required name="Name"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Email" required name="Email"></p>
-        <p><input class="w3-input w3-border" type="text" placeholder="Message" required name="Message"></p>
-      <button type="submit" class="w3-button w3-green w3-third">Send a Message</button>
-      </form>
-    </div>
-    
-    
+    {% endfor %}
+
+
+
   
 
   {% endblock %}

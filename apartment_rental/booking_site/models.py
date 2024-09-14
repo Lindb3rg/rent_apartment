@@ -11,6 +11,8 @@ class Apartment(models.Model):
     postal_code = models.CharField(max_length=50)
     state = models.CharField(max_length=50)
     country = models.CharField(max_length=50)
+    phone = models.CharField(max_length=50)
+    contact_person = models.CharField(max_length=50)
     lat = models.DecimalField(max_digits=9,decimal_places=6, default=0)
     lng = models.DecimalField(max_digits=9,decimal_places=6, default=0)
     email = models.EmailField()

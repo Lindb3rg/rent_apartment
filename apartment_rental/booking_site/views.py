@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import forms
+from booking_site.models import Apartment
 
 def index(request):
     if request.method == 'POST':
@@ -14,9 +15,7 @@ def index(request):
             return render(request, 'booking_site/index.html', {'form': forms.SubscribeForm(), 'success': True})
     else:
         form = forms.SubscribeForm()
-    
-    
-    
+        
     return render(request,'booking_site/index.html', context={'form':forms.SubscribeForm(),'success':False})
 
 
@@ -26,5 +25,9 @@ def index(request):
 
 
 def booking(request):
-    return render(request,'booking_site/booking.html', context={})
+    
+    apartments = Apartment.objects.all()
+    context = {'apartments':apartments}
+    
+    return render(request,'booking_site/booking.html', context)
 
