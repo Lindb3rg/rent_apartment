@@ -19,7 +19,7 @@ from django.urls import path,include
 from booking_site import views
 
 urlpatterns = [
+    path("", include("booking_site.urls")),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('booking_site', include('booking_site.urls'))
     ]
