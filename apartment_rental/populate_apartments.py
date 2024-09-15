@@ -10,14 +10,23 @@ from random_address import real_random_address
 import random
 from booking_site.models import Apartment
 from faker import Faker
-import re
+
 
 
 fakegen = Faker()
 
 def random_int(value_1,value_2):
     return random.randint(value_1,value_2)
+
+def random_price():
+    return random.randint(99,599)
+
+
+def random_availability():
     
+    available_aminity = ["Yes","No"]
+    
+    return random.choice(available_aminity)
 
 def populate_apartments(N=5):
     for _ in range(N):
@@ -28,6 +37,8 @@ def populate_apartments(N=5):
         lng = float(coordinates["lng"])
         contact_person = fakegen.name()
         phone = fakegen.basic_phone_number()
+        price = random_price()
+        
         
         
         extra_text  = fakegen.text(max_nb_chars=300)
@@ -45,6 +56,7 @@ def populate_apartments(N=5):
                                                     lng = lng,
                                                     email=fake_email,
                                                     phone = phone,
+                                                    price = price,
                                                     contact_person=contact_person,
                                                     country="US",
                                                     max_people=random_int(1,5),
@@ -52,12 +64,12 @@ def populate_apartments(N=5):
                                                     bedrooms=random_int(1,5),
                                                     check_in = "3PM",
                                                     check_out = "12PM",
-                                                    shower=random_int(0,1),
-                                                    wifi=random_int(0,1),
-                                                    tv=random_int(0,1),
-                                                    kitchen=random_int(0,1),
-                                                    heating=random_int(0,1),
-                                                    accessible=random_int(0,1),
+                                                    shower=random_availability(),
+                                                    wifi=random_availability(),
+                                                    tv=random_availability(),
+                                                    kitchen=random_availability(),
+                                                    heating=random_availability(),
+                                                    accessible=random_availability(),
                                                     extra_info=extra_text,
                                                     rules=rules)[0]
         

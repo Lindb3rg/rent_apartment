@@ -8,14 +8,16 @@
     
     
     <!-- Slideshow Header -->
+    <div>
     {% for apartment in apartments %}
 
-    <div class="w3-hide-large" style="margin-top:80px"></div>
+
+    
     <div class="w3-container" id="apartment">
       
-    {% comment %} Listing of apartments starts here {% endcomment %}
     
-      <h2 class="w3-text-green">The Apartment</h2>
+    
+      <h2 class="w3-text-green">{{apartment.street_address}}</h2>
       <div class="w3-display-container mySlides">
       <img src="{% static 'images/livingroom.jpg'%}" style="width:100%;margin-bottom:-6px">
         <div class="w3-display-bottomleft w3-container w3-black">
@@ -54,6 +56,9 @@
       <div class="w3-col s3">
           <img class="demo w3-opacity w3-hover-opacity-off" src="{% static 'images/livingroom2.jpg'%}" style="width:100%;cursor:pointer" onclick="currentDiv(4)" title="Second Living Room">
       </div>
+    </div>
+    <div class="w3-container">
+        <h1>${{ apartment.price }}</h1>
     </div>
   
     <div class="w3-container">
@@ -110,8 +115,12 @@
       </div>
     <hr>
 
-    {% endfor %}
 
+
+
+    
+
+    {% endfor %}
 
 
   

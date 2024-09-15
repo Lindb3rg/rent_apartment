@@ -3,6 +3,13 @@ from django.db import models
 class Subscribe(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField()
+
+class SearchAvailability(models.Model):
+    check_in = models.DateField()
+    check_out = models.DateField()
+    adults = models.IntegerField(default=0)
+    kids = models.IntegerField(default=0)
+    
     
     
 class Apartment(models.Model):
@@ -16,22 +23,26 @@ class Apartment(models.Model):
     lat = models.DecimalField(max_digits=9,decimal_places=6, default=0)
     lng = models.DecimalField(max_digits=9,decimal_places=6, default=0)
     email = models.EmailField()
+    price = models.IntegerField(default=0)
     max_people = models.PositiveSmallIntegerField(default=0)
     bathrooms = models.PositiveSmallIntegerField(default=0)
     bedrooms = models.PositiveSmallIntegerField(default=0)
     check_in = models.CharField(max_length=10)
     check_out = models.CharField(max_length=10)
-    shower = models.BooleanField(default=0)
-    wifi = models.BooleanField(default=0)
-    tv = models.BooleanField(default=0)
-    kitchen = models.BooleanField(default=0)
-    heating = models.BooleanField(default=0)
-    accessible = models.BooleanField(default=0)
+    shower = models.CharField(max_length=50)
+    wifi = models.CharField(max_length=50)
+    tv = models.CharField(max_length=50)
+    kitchen = models.CharField(max_length=50)
+    heating = models.CharField(max_length=50)
+    accessible = models.CharField(max_length=50)
     extra_info = models.TextField(max_length=100)
     rules = models.TextField(max_length=100)
     
     def __str__(self) -> str:
         return f"{self.street_address}, {self.city}"
+    
+
+        
     
 # class Attachment(models.Model):
 #     class AttachmentType(models.TextChoices):
