@@ -24,6 +24,7 @@ def index(request):
     apartments = Apartment.objects.all()
     apartments_from = Apartment.objects.all().aggregate(Min('price'))
     print(apartments_from)
+    text = "Hello world!"
     if request.method == 'POST':
         form = forms.SearchAvailabilityForm(request.POST)
         if form.is_valid():
@@ -39,7 +40,7 @@ def index(request):
     else:
         form = forms.SearchAvailabilityForm()
         
-    return render(request,'booking_site/index.html', context={'form':forms.SearchAvailabilityForm(),'success':False, 'apartments_from':apartments_from})
+    return render(request,'booking_site/index.html', context={'form':forms.SearchAvailabilityForm(),'success':False, 'apartments_from':apartments_from,'hello':text})
 
 
 
