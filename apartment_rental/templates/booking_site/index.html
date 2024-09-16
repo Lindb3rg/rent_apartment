@@ -28,6 +28,14 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
     <a href="{% url 'admin:index'%}" target="blank">Go to Admin</a>
     <a href="{% url 'booking_site:booking'%}" >Go to Booking</a>
     <a href="{% url 'index'%}">Link to index</a>
+    <a href="{% url 'booking_site:register'%}">Register</a>
+    
+    {% if user.is_authenticated %}
+    <a href="{% url 'logout_user'%}">Logout</a>
+    <h1>Tjoflöjt</h1>
+    {% else %}
+    <a href="{% url 'booking_site:user_login'%}">Login</a>
+    {% endif %}
 
     
     <form method="POST">

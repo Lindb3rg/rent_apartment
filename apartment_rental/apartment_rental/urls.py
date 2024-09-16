@@ -22,4 +22,6 @@ urlpatterns = [
     path("", include("booking_site.urls")),
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
+    path('logout/', views.logout_user, name='logout_user'),
+    
     ]

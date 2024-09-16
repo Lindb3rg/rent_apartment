@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% extends 'booking_site/index.html'%}
+{% block body_block %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <div class="w3-container w3-white w3-center">
+        
+        <h2 class="w3-wide">Login</h2>
+        <form action="{% url 'booking_site:user_login'%}" method="POST">
+            {% csrf_token %}
+            <label for="username">Username: </label>
+            <p><input class="w3-input w3-border" name="username" type="text" placeholder="Enter username "></p>
+            
+            <label for="password">Password: </label>
+            <p><input class="w3-input w3-border" name="password" type="text" placeholder="Enter password"></p>
+
+            <button type="submit" class="w3-button w3-padding-large w3-green w3-margin-bottom" value="login">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+{% endblock %}

@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Subscribe(models.Model):
     name = models.CharField(max_length=50)
@@ -42,18 +43,17 @@ class Apartment(models.Model):
         return f"{self.street_address}, {self.city}"
     
 
-        
+
+class UserProfileInfo(models.Model):
     
-# class Attachment(models.Model):
-#     class AttachmentType(models.TextChoices):
-#         PHOTO = "Photo", ("Photo")
-#         VIDEO = "Video", ("Video")
+    #Adding more attributes to original class User
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    
+    # Additional
+    portfolio_site = models.URLField(blank=True)
+    
+    profile_pic = models.ImageField(upload_to='profile_pics', blank=True)
+    
 
-#     file = models.ImageField('Attachment', upload_to='attachments/')
-#     file_type = models.CharField('File type', choices=AttachmentType.choices, max_length=10)
-
-#     publication = models.ForeignKey(Apartment, on_delete=models.CASCADE, verbose_name='Apartment Model')
-
-#     class Meta:
-#         verbose_name = 'Attachment'
-#         verbose_name_plural = 'Attachments'
+    def __str__(self):
+        return self.user.username
